@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: #03071E;
+}
+.bg-image {
+    background-image: url('https://images.unsplash.com/photo-1458053688450-eef5d21d43b3?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNpbmVtYXxlbnwwfHwwfHx8MA%3D%3D');
+    min-height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    color: #03071E;
+    border-bottom: 2px solid #03071E;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+form {
+    display: grid;
+    gap: 15px;
+}
+label {
+    font-weight: bold;
+    color: #03071E;
+    display: block;
+    margin-bottom: 5px;
+}
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #03071E;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #6A040F;
+    box-shadow: 0 0 5px rgba(106, 4, 15, 0.5);
+}
+textarea {
+    height: 120px;
+}
+button {
+    background-color: #D00000;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #9D0208;
+}
+
+@media (min-width: 769px) {
+    .container {
+        max-width: 600px;
+        height: auto;
+        margin: 0 auto;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(3, 7, 30, 0.2);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    h1 {
+        font-size: 2rem;
+        border-bottom-width: 3px;
+        margin-bottom: 40px;
+    }
+    form {
+        gap: 20px;
+    }
+    input, textarea {
+        font-size: 16px;
+    }
+    textarea {
+        height: 150px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        background-color: #6a040f;
+        color: white;
+    }
+
+}

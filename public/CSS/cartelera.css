@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: white 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+header {
+    background-color: #FFFFFF; 
+    color: #6A040F; 
+    padding: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 120px;
+
+}
+
+.contenedor {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.mbar {
+    height: 4rem;
+    float: left;
+    margin-top: 10px;
+}
+
+.mbar span {
+    display: block;
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+}
+
+.mbar span:nth-child(1) {
+    top: 0px;
+    background-color: #6A040F; 
+}
+
+.mbar span:nth-child(2) {
+    top: 25px;
+    background-color: #9D0208; 
+}
+
+.mbar span:nth-child(3) {
+    top: 50px;
+    background-color: #D00000; 
+}
+
+.cartelera {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6A040F; 
+    grid-column: span 2; 
+}
+
+.movie {
+    display: flex;
+    background-color: #370617; 
+    padding: 40px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.movie:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+}
+
+.movie img {
+    width: 150px; 
+    height: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.details h2 {
+    font-size: 24px; 
+    margin-bottom: 10px;
+    color: #D00000; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.details p {
+    margin-bottom: 15px;
+    color: #FFF;
+}
+
+.times, .quality {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.times button, .quality button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9D0208; 
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease; 
+}
+
+.search-bar {
+    width: 80%;
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 5px;
+    border: 2px solid #6A040F;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #6A040F; 
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: #D00000; 
+}
