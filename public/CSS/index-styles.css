@@ -1,0 +1,88 @@
+html{
+    background-color:#04052E ;
+}
+
+main{
+    background-color:#fff;
+}
+
+#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 80vh;
+    background-image:linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://wallpapers.com/images/hd/cinema-theater-screen-red-interior-mdii641t9soyox58.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.button {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: white;
+    background-color: #D00000;
+    padding: 10px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 20px auto;
+    display: inline-block;
+}
+
+#hero h1{
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.movies-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #6a040f;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.movie-card {
+    width: 100%;
+    max-width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #6a040f;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
