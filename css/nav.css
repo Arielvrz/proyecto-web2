@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    height: 10vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    width: 100%;
+    align-items: center;
+}
+
+nav #menulista {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 25px;
+    list-style: none;
+}
+
+nav #menulista li a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Poppins',sans-serif;
+    padding-top: 10px;
+}
+
+#burger {
+    height: 40px;
+    width: 40px;
+    background-color: red;
+    border-radius: 50px;
+    margin: 20px 20px 20px 40px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px 1px;
+}
+
+#meme {
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+nav ul li a:hover {
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+#menulista {
+    overflow: hidden;
+    transition: 0.4s;
+    background-color: rgba(0,0,0,0.1);
+    padding-left: 10px;
+    width: 200px;
+    border-radius: 5px;
+    height: 100px;
+}
+
+
+
