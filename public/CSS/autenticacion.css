@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #6a040f;
+}
+
+#pio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 20vh;
+}
+
+.tarjeta img {
+    max-width: 100%;
+}
+
+.container {
+    padding: 10px 30px;
+}
+
+.tarjeta {
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta h2 {
+    color: #9d0208;
+}
+
+@media(min-width:769px) {
+
+    .tarjeta {
+        width: 30%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tarjeta {
+        margin-right: 15px;
+    }
+
+    .tarjeta img {
+        height: 270px;
+        width: 300px;
+    }
+}
+
+
+
+section{
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 12px;
+    background-color: #f0f0f0;
+}
+.formulario-iniciosesion{
+  padding-top: 45px;
+  padding-bottom: 60px;
+}
+.formulario-crearcuenta{
+  padding-top: 45px;
+  padding-bottom: 60px;
+}
+.formulario-iniciosesion h1{
+text-align: center;
+padding-bottom: 12px;
+}
+.formulario-crearcuenta h1{
+  text-align: center;
+  padding-bottom: 12px;
+  }
+.formulario-iniciosesion a {
+  display: block;
+  text-align: center; /* Añade esta propiedad para alinear el enlace al centro */
+  margin-top: 20px;
+  color: #555;
+}
+.formulario-crearcuenta a {
+  display: block;
+  text-align: center; /* Añade esta propiedad para alinear el enlace al centro */
+  margin-top: 20px;
+  color: #555;
+}
+/* Estilos para el formulario */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  height: 320px;
+}
+
+/* Estilos para los campos de entrada */
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+/* Estilos para el botón de envío */
+input[type=submit] {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  float: right;
+}
+
+/* Estilos para el botón de envío al pasar el ratón por encima */
+input[type=submit]:hover {
+  background-color: #0372e9;
+}

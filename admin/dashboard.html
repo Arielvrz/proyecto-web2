@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <title>Dashboard</title>
+</head>
+<body>
+<div class="mobile-header">
+    <button class="mobile-menu-button" onclick="toggleSidebar()">☰</button>
+    <h1>Cinema Admin</h1>
+    <div style="width: 24px;"></div>
+</div>
+
+<div class="container">
+    <aside class="sidebar" id="sidebar">
+        <div class="user-info">
+            <div class="user-avatar"></div>
+            <div class="user-details">
+                <h2>Admin User</h2>
+                <p>admin@cinema.com</p>
+            </div>
+        </div>
+        <div class="sidebar-buttons">
+            <button class="sidebar-button">← Back</button>
+            <button class="sidebar-button">+ Add Employee</button>
+        </div>
+    </aside>
+    <main class="main-content">
+        <div class="grid-container">
+            <div class="grid-item">
+                <div class="icon-placeholder">🎬</div>
+                <h3>Cartelera</h3>
+                <button class="go-button">Ir</button>
+            </div>
+            <div class="grid-item">
+                <div class="icon-placeholder">👥</div>
+                <h3>Equipo</h3>
+                <button class="go-button">Ir</button>
+            </div>
+            <div class="grid-item">
+                <div class="icon-placeholder">🎟️</div>
+                <h3>Promociónes</h3>
+                <button class="go-button">Ir</button>
+            </div>
+            <div class="grid-item">
+                <div class="icon-placeholder">🍿</div>
+                <h3>Dulcería</h3>
+                <button class="go-button">Ir</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
