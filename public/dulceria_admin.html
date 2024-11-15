@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/dulceria.css">
+    <link rel="stylesheet" href="CSS/dulceria_admin.css">
     <link rel="stylesheet" href="CSS/nav.css">
-    
+    <script type="text/javascript" src="js/dulceria.js"></script>
 </head>
 <body>
     <header>
@@ -111,6 +111,41 @@
         </div>
     </div>
 
+    <!-- Botón para abrir el modal -->
+    <div class="modal-btn-container">
+        <button onclick="openModal()" class="add-product-btn">Agregar Producto</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-window">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Agregar Nuevo Producto</h2>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="productName">Nombre del producto:</label>
+                    <input type="text" id="productName" name="productName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productDescription">Descripción:</label>
+                    <textarea id="productDescription" name="productDescription" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Precio:</label>
+                    <input type="number" id="productPrice" name="productPrice" required step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="productImage">Imagen:</label>
+                    <input type="file" id="productImage" name="productImage" accept="image/*">
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitdata">Agregar Producto</button>
+            </form>
+        </div>
+    </div>
 
 
 

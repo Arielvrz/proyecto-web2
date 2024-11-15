@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-family:Arial, Helvetica, sans-serif ;
+    font-size: 40px;
+    color: white;
+    padding: 15px 20px;
+}
+
+.contenedor_dulceria{
+    width: 93%;
+    background-color: #6A040F;
+    display: inline-block;
+    padding: 45px;
+    margin: 50px 50px;
+    position: relative;
+    top: 50px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.producto{
+    
+    width: 325px;
+    height: 560px;
+    background-color:#2b2b2b;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin: 10px;
+    float: left;
+}
+
+.producto img{
+    width: 90%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.nombre_combo{
+    font-size: 1.5em;
+    color: whitesmoke;
+    margin: 10px 10px;
+
+}
+
+.precio{
+    font-size: 1.5em;
+    color: #D00000;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.agregar_producto{
+    background-color: #FFBA08;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.agregar_producto:hover{
+    background-color: #FAA307;
+}
+
+.clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.img_dulceria{
+    height: 500px;
+    width: 500px;
+}
+
+.descripcion_combo{
+    color: whitesmoke;
+    font-size: 16px;
+    margin:5px ;
+    text-align: justify;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #6a040f;
+    color: white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo del contenedor y botón modal */
+.modal-btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.add-product-btn {
+    padding: 12px 24px;
+    background-color: #FAA307;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+/* Ventana modal */
+.modal-window {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Animación de aparición */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cerrar el modal */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+/* Estilo del formulario */
+#productForm .form-group {
+    margin-bottom: 15px;
+}
+
+#productForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#productForm input,
+#productForm textarea,
+#productForm .submit-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#productForm textarea {
+    resize: vertical;
+    height: 80px;
+}
+
+.submit-btn {
+    background-color: #6a040f;
+    color: white;
+    border: none;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #6a040f;
+}
+

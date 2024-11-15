@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+import {getFirestore,collection, addDoc, getDocs,getCountFromServer, deleteDoc, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -15,6 +16,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
+
+const db=getFirestore()
+
+
 
 export class ManageAccount {
   register(email, password) {
@@ -55,6 +60,23 @@ export class ManageAccount {
       });
   }
 }
+
+export const saveProduct=(product)=>{
+    addDoc(collection(db,'products'),product);
+  }
+
+export const getProducts=()=>getDocs(collection(db,'products'))
+
+export const getProduct=(id)=>getDoc(doc(db,'products',id))
+
+export const getProductListSize=async()=>{
+    const products = collection(db, "products");
+    const snapshot = await getCountFromServer(products);
+    return snapshot.data().count;
+  }
+  
+export const deleteProduct=(id)=> deleteDoc(doc(db,'products',id))
+export const updateProduct=(id, newFields)=>updateDoc(doc(db,'products',id), newFields)
 
 
 console.log("Firebase conectado");
