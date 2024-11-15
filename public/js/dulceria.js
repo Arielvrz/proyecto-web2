@@ -1,10 +1,4 @@
 
-let addButton = document.getElementById("submitdata");
-// Agrega un listener para el evento de click
-addButton.addEventListener("click", AddData);
-
-showData();
-
 
 
 // Función para abrir el modal
@@ -28,3 +22,6 @@ window.onclick = function(event) {
         closeModal();
     }
 };
+
+
+
