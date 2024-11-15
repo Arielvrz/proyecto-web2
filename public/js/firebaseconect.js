@@ -34,7 +34,7 @@ export class ManageAccount {
   authenticate(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((_) => {
-        window.location.href = "index.html";
+        window.location.href = "dashboard.html";
         // Mostrar alerta de inicio de sesión exitoso
         alert("Has iniciado sesión correctamente. Serás redirigido a la página principal.");
       })
@@ -48,7 +48,7 @@ export class ManageAccount {
   signOut() {
     signOut(auth)
       .then((_) => {
-        window.location.href = "index.html";
+        window.location.href = "dashboard.html";
       })
       .catch((error) => {
         console.error(error.message);
