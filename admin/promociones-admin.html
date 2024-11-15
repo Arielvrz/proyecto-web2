@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/cartelera-admin.css">
+    <title>Promociones Management</title>
+</head>
+<body>
+<div class="sidebar">
+  <div class="admin-profile">
+    <div class="admin-avatar"></div>
+    <div class="admin-info">
+      <h2>Admin User</h2>
+      <p>admin@cinema.com</p>
+    </div>
+  </div>
+  <button class="sidebar-button" onclick="window.location.href='dashboard.html'">← Back</button>
+  <button class="sidebar-button">+ Add Employee</button>
+</div>
+
+<div class="main-content">
+  <div class="header">
+    <h1>Promociones</h1>
+    <button class="add-movie-button" onclick="openModal()">
+      + Agregar promoción
+    </button>
+  </div>
+
+  <div id="moviesGrid" class="movies-grid">
+
+  </div>
+</div>
+
+<div id="addMovieModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Agregar Promoción</h2>
+    </div>
+
+    <form id="movieForm" onsubmit="addMovie(event)">
+      <div class="form-group">
+        <label>Agregar título de la promoción</label>
+        <input type="text" id="movieTitle" required>
+      </div>
+
+      <div class="form-group">
+        <label>Agregar descripción</label>
+        <textarea id="movieDescription" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Agregar precio</label>
+        <input type="number" id="moviePrice" required>
+      </div>
+
+      <div class="form-group">
+        <label for="startDate">Fecha de Inicio:</label>
+        <input type="date" id="startDate" name="startDate" required>
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">Fecha de Fin:</label>
+        <input type="date" id="endDate" name="endDate" required>
+      </div>
+
+      <div class="form-group">
+        <label>Imagen de la promoción</label>
+        <input type="file" id="movieImage" accept="image/*" required>
+      </div>
+
+      <button type="button" class="schedule-button" onclick="alert('Función de horarios pendiente')">
+        Agregar horario
+      </button>
+
+      <div class="button-container">
+        <button type="submit" class="submit-button">Agregar Promoción</button>
+        <button type="button" class="cancel-button" onclick="closeModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="../js/promociones-admin.js"></script>
+</body>
+</html>
