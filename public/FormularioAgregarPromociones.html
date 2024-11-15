@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nueva Promoción</title>
+    <link rel="stylesheet" href="CSS/FormularioAgregarPromociones.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registrar Nueva Promoción</h1>
+        <form id="promotionForm">
+            <label for="promotionName">Nombre de la Promoción:</label>
+            <input type="text" id="promotionName" name="promotionName" required>
+
+            <label for="promotionDescription">Descripción:</label>
+            <textarea id="promotionDescription" name="promotionDescription" required></textarea>
+
+            <label for="startDate">Fecha de Inicio:</label>
+            <input type="date" id="startDate" name="startDate" required>
+
+            <label for="endDate">Fecha de Fin:</label>
+            <input type="date" id="endDate" name="endDate" required>
+
+            <label for="discount">Descuento (%):</label>
+            <input type="number" id="discount" name="discount" min="0" max="100" required>
+
+            <button type="submit">Registrar Promoción</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
