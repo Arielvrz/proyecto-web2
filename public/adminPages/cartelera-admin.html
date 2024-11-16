@@ -53,6 +53,16 @@
       </div>
 
       <div class="form-group">
+        <label>Horario de la función</label>
+        <input type="time" id="movieShowtime" required>
+      </div>
+
+      <div class="form-group">
+        <label>Duración (minutos)</label>
+        <input type="number" id="movieDuration" required min="1" max="999">
+      </div>
+
+      <div class="form-group">
         <label>URL de la imagen</label>
         <input type="url" id="movieImage" required
                placeholder="https://ejemplo.com/imagen.jpg">
@@ -64,6 +74,48 @@
       <div class="button-container">
         <button type="submit" class="submit-button">Agregar Película</button>
         <button type="button" class="cancel-button" id="cancelBtn">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Edit Movie Form -->
+  <div id="editMovieFormContainer" class="form-container" style="display: none;">
+    <h2>Editar Película</h2>
+    <form id="editMovieForm">
+      <input type="hidden" id="editMovieId">
+      <div class="form-group">
+        <label>Título de la película</label>
+        <input type="text" id="editMovieTitle" required>
+      </div>
+
+      <div class="form-group">
+        <label>Descripción</label>
+        <textarea id="editMovieDescription" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Precio</label>
+        <input type="number" id="editMoviePrice" required>
+      </div>
+
+      <div class="form-group">
+        <label>Horario de la función</label>
+        <input type="time" id="editMovieShowtime" required>
+      </div>
+
+      <div class="form-group">
+        <label>Duración (minutos)</label>
+        <input type="number" id="editMovieDuration" required min="1" max="999">
+      </div>
+
+      <div class="form-group">
+        <label>URL de la imagen</label>
+        <input type="url" id="editMovieImage" required>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" class="submit-button">Actualizar Película</button>
+        <button type="button" class="cancel-button" onclick="document.getElementById('editMovieFormContainer').style.display='none'">Cancelar</button>
       </div>
     </form>
   </div>

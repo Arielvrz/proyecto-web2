@@ -14,13 +14,18 @@ export async function addMovie(event) {
     const titulo = document.getElementById('movieTitle').value;
     const descripcion = document.getElementById('movieDescription').value;
     const precio = document.getElementById('moviePrice').value;
-    const imageUrl = document.getElementById('movieImage').value; // Changed to URL input
+    const imageUrl = document.getElementById('movieImage').value;
+    const showtime = document.getElementById('movieShowtime').value; // New field
+    const duration = document.getElementById('movieDuration').value; // New field
 
     const pelicula = {
         titulo,
         descripcion,
         precio: parseFloat(precio),
-        imageFilePelicula: imageUrl // Store URL directly
+        imageFilePelicula: imageUrl,
+        showtime, // Add showtime
+        duration: parseInt(duration), // Add duration in minutes
+        createdAt: new Date().toISOString() // Add creation timestamp
     };
 
     try {
@@ -51,6 +56,8 @@ function createMovieCard(movie, id) {
         <div class="movie-title">${movie.titulo}</div>
         <div class="movie-description">${movie.descripcion}</div>
         <div class="movie-price">$${movie.precio.toFixed(2)}</div>
+        <div class="movie-showtime">Función: ${movie.showtime}</div>
+        <div class="movie-duration">Duración: ${movie.duration} minutos</div>
     `;
 
     const buttonGroup = document.createElement('div');
@@ -91,6 +98,8 @@ async function populateEditForm(movieId) {
             document.getElementById('editMovieDescription').value = data.descripcion;
             document.getElementById('editMoviePrice').value = data.precio;
             document.getElementById('editMovieImage').value = data.imageFilePelicula;
+            document.getElementById('editMovieShowtime').value = data.showtime;
+            document.getElementById('editMovieDuration').value = data.duration;
         }
     } catch (error) {
         console.error('Error al cargar los datos de la película: ', error);
@@ -106,12 +115,17 @@ export async function editMovie(event) {
     const descripcion = document.getElementById('editMovieDescription').value;
     const precio = parseFloat(document.getElementById('editMoviePrice').value);
     const imageUrl = document.getElementById('editMovieImage').value;
+    const showtime = document.getElementById('editMovieShowtime').value;
+    const duration = parseInt(document.getElementById('editMovieDuration').value);
 
     const updatedMovie = {
         titulo,
         descripcion,
         precio,
-        imageFilePelicula: imageUrl
+        imageFilePelicula: imageUrl,
+        showtime,
+        duration,
+        updatedAt: new Date().toISOString() // Add update timestamp
     };
 
     try {

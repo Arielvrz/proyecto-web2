@@ -17,6 +17,16 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 const auth = getAuth();
 
+export const getSuperUser = async (userId) => {
+    const superUserDocRef = doc(db, 'superUsers', userId);
+    const superUserDoc = await getDoc(superUserDocRef);
+    if (superUserDoc.exists()) {
+        return superUserDoc.data();
+    } else {
+        return null;
+    }
+};
+
 export const saveProduct=(product)=>{
     addDoc(collection(db,'products'),product);
 }
@@ -63,6 +73,8 @@ export class ManageAccount {
                 alert("Error al iniciar sesión: " + error.message);
       });
   }
+
+
 
   signOut() {
     signOut(auth)

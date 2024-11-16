@@ -61,9 +61,7 @@ header {
 .cartelera {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 40px;
+    padding: 20px;
 }
 
 h1 {
@@ -75,11 +73,12 @@ h1 {
 
 .movie {
     display: flex;
-    background-color: #370617; 
-    padding: 40px; 
+    background-color: #370617;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
 }
 
 .movie:hover {
@@ -88,11 +87,13 @@ h1 {
 }
 
 .movie img {
-    width: 150px; 
-    height: auto;
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
     margin-right: 20px;
     border-radius: 5px;
 }
+
 
 .details {
     display: flex;
@@ -148,4 +149,84 @@ footer {
 button:hover {
     transform: scale(1.1);
     background-color: #D00000; 
+}
+
+/* Add these to your existing cartelera.css */
+
+.movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 40px;
+    padding: 20px;
+    width: 100%;
+}
+.times button.active,
+.quality button.active {
+    background-color: #D00000;
+    transform: scale(1.1);
+}
+
+.search-bar {
+    width: 80%;
+    max-width: 600px;
+    padding: 15px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 25px;
+    border: 2px solid #6A040F;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: white;
+    color: #333;
+}
+
+.search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(106, 4, 15, 0.3);
+    border-color: #9D0208;
+}
+
+/* Add loading animation */
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #6A040F;
+}
+
+/* Error state for images */
+.movie img {
+    min-height: 200px;
+    object-fit: cover;
+    background-color: #f0f0f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .movies-container {
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .movies-container {
+        grid-template-columns: 1fr;
+    }
+
+    .movie {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .movie img {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 180px;
+        height: 270px;
+    }
+
+    .times, .quality {
+        justify-content: center;
+    }
 }
