@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/cartelera-admin.css">
+  <link rel="stylesheet" href="css/cartelera-cards.css">
   <title>Cartelera Management</title>
+
 </head>
 <body>
 <div class="sidebar">
@@ -22,55 +24,114 @@
 <div class="main-content">
   <div class="header">
     <h1>Cartelera</h1>
-    <button class="add-movie-button" onclick="openModal()">
+    <button type="button" class="add-movie-button" id="addMovieBtn">
       + Agregar Película
     </button>
   </div>
 
   <div id="moviesGrid" class="movies-grid">
-
+    <!-- Pelis van aqui!!! -->
   </div>
-</div>
 
-<div id="addMovieModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title">Agregar Película</h2>
-    </div>
-
-    <form id="movieForm" onsubmit="addMovie(event)">
+  <!-- agregar peli -->
+  <div id="addMovieFormContainer" class="form-container" style="display: none;">
+    <h2>Agregar Película</h2>
+    <form id="movieForm">
       <div class="form-group">
-        <label>Agregar título de la película</label>
+        <label>Título de la película</label>
         <input type="text" id="movieTitle" required>
       </div>
 
       <div class="form-group">
-        <label>Agregar descripción</label>
+        <label>Descripción</label>
         <textarea id="movieDescription" required></textarea>
       </div>
 
       <div class="form-group">
-        <label>Agregar precio</label>
+        <label>Precio</label>
         <input type="number" id="moviePrice" required>
       </div>
 
       <div class="form-group">
-        <label>Imagen de la película</label>
-        <input type="file" id="movieImage" accept="image/*" required>
+        <label>URL de la imagen</label>
+        <input type="url" id="movieImage" required
+               placeholder="https://ejemplo.com/imagen.jpg">
+        <small style="color: #666; display: block; margin-top: 5px;">
+          Ingrese la URL de una imagen (por ejemplo, desde Google Images)
+        </small>
       </div>
-
-      <button type="button" class="schedule-button" onclick="alert('Función de horarios pendiente')">
-        Agregar horario
-      </button>
 
       <div class="button-container">
         <button type="submit" class="submit-button">Agregar Película</button>
-        <button type="button" class="cancel-button" onclick="closeModal()">Cancelar</button>
+        <button type="button" class="cancel-button" id="cancelBtn">Cancelar</button>
       </div>
     </form>
   </div>
+
+  <!-- Edit Movie Form -->
+  <div id="editMovieFormContainer" class="form-container" style="display: none;">
+    <h2>Editar Película</h2>
+    <form id="editMovieForm">
+      <input type="hidden" id="editMovieId">
+      <div class="form-group">
+        <label>Título de la película</label>
+        <input type="text" id="editMovieTitle" required>
+      </div>
+
+      <div class="form-group">
+        <label>Descripción</label>
+        <textarea id="editMovieDescription" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Precio</label>
+        <input type="number" id="editMoviePrice" required>
+      </div>
+
+      <div class="form-group">
+        <label>URL de la imagen</label>
+        <input type="url" id="editMovieImage" required>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" class="submit-button">Actualizar Película</button>
+        <button type="button" class="cancel-button" onclick="document.getElementById('editMovieFormContainer').style.display='none'">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div id="deleteModal" class="form-container" style="display: none;">
+    <h2>Confirmar Eliminación</h2>
+    <p>¿Está seguro que desea eliminar esta película?</p>
+    <div class="button-container">
+      <button type="button" class="delete-button" id="confirmDelete">Eliminar</button>
+      <button type="button" class="cancel-button" onclick="document.getElementById('deleteModal').style.display='none'">Cancelar</button>
+    </div>
+  </div>
 </div>
 
-<script src="../js/cartelera-admin.js"></script>
+<script type="module">
+  import { addMovie, toggleForm, displayMovies, editMovie, deleteMovie } from '../js/cartelera-admin.js';
+
+  // Listeners !!!
+  document.getElementById('addMovieBtn').addEventListener('click', toggleForm);
+  document.getElementById('cancelBtn').addEventListener('click', toggleForm);
+  document.getElementById('movieForm').addEventListener('submit', addMovie);
+  document.getElementById('editMovieForm').addEventListener('submit', editMovie);
+
+  // modal maldito
+  window.openDeleteModal = (movieId) => {
+    const modal = document.getElementById('deleteModal');
+    modal.style.display = 'block';
+    document.getElementById('confirmDelete').onclick = async () => {
+      await deleteMovie(movieId);
+      modal.style.display = 'none';
+    };
+  };
+
+  // mostrar pelis cuando cargue
+  displayMovies();
+</script>
 </body>
 </html>
