@@ -114,7 +114,7 @@ footer {
     color: white;
 }
 
-/* Responsive adjustments */
+/* Responsive  */
 @media (max-width: 768px) {
     .contenedor_dulceria {
         width: 95%;

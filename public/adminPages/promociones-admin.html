@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/cartelera-admin.css">
-    <title>Promociones Management</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/cartelera-admin.css">
+  <link rel="stylesheet" href="css/promoloco-cars.css">
+  <title>Promociones Management</title>
+
 </head>
 <body>
 <div class="sidebar">
@@ -22,64 +24,134 @@
 <div class="main-content">
   <div class="header">
     <h1>Promociones</h1>
-    <button class="add-movie-button" onclick="openModal()">
-      + Agregar promoción
+    <button type="button" class="add-movie-button" id="addPromoBtn">
+      + Agregar Promoción
     </button>
   </div>
 
-  <div id="moviesGrid" class="movies-grid">
-
+  <div id="promosGrid" class="promo-grid">
+    <!-- Promotions will be displayed here -->
   </div>
-</div>
 
-<div id="addMovieModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title">Agregar Promoción</h2>
-    </div>
-
-    <form id="movieForm" onsubmit="addMovie(event)">
+  <!-- Add Promo Form -->
+  <div id="addPromoFormContainer" class="form-container" style="display: none;">
+    <h2>Agregar Promoción</h2>
+    <form id="promoForm">
       <div class="form-group">
-        <label>Agregar título de la promoción</label>
-        <input type="text" id="movieTitle" required>
+        <label>Título de la promoción</label>
+        <input type="text" id="promoTitle" required>
       </div>
 
       <div class="form-group">
-        <label>Agregar descripción</label>
-        <textarea id="movieDescription" required></textarea>
+        <label>Descripción</label>
+        <textarea id="promoDescription" required></textarea>
       </div>
 
       <div class="form-group">
-        <label>Agregar precio</label>
-        <input type="number" id="moviePrice" required>
+        <label>Precio</label>
+        <input type="number" id="promoPrice" required>
       </div>
 
       <div class="form-group">
-        <label for="startDate">Fecha de Inicio:</label>
-        <input type="date" id="startDate" name="startDate" required>
+        <label>Fecha de inicio</label>
+        <input type="date" id="promoStartDate" required>
       </div>
 
       <div class="form-group">
-        <label for="endDate">Fecha de Fin:</label>
-        <input type="date" id="endDate" name="endDate" required>
+        <label>Fecha de fin</label>
+        <input type="date" id="promoEndDate" required>
       </div>
 
       <div class="form-group">
-        <label>Imagen de la promoción</label>
-        <input type="file" id="movieImage" accept="image/*" required>
+        <label>URL de la imagen</label>
+        <input type="url" id="promoImage" required
+               placeholder="https://ejemplo.com/imagen.jpg">
+        <small style="color: #666; display: block; margin-top: 5px;">
+          Ingrese la URL de una imagen (por ejemplo, desde Google Images)
+        </small>
       </div>
-
-      <button type="button" class="schedule-button" onclick="alert('Función de horarios pendiente')">
-        Agregar horario
-      </button>
 
       <div class="button-container">
         <button type="submit" class="submit-button">Agregar Promoción</button>
-        <button type="button" class="cancel-button" onclick="closeModal()">Cancelar</button>
+        <button type="button" class="cancel-button" id="cancelBtn">Cancelar</button>
       </div>
     </form>
   </div>
+
+  <!-- Edit Promo Form -->
+  <div id="editPromoFormContainer" class="form-container" style="display: none;">
+    <h2>Editar Promoción</h2>
+    <form id="editPromoForm">
+      <input type="hidden" id="editPromoId">
+      <div class="form-group">
+        <label>Título de la promoción</label>
+        <input type="text" id="editPromoTitle" required>
+      </div>
+
+      <div class="form-group">
+        <label>Descripción</label>
+        <textarea id="editPromoDescription" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Precio</label>
+        <input type="number" id="editPromoPrice" required>
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de inicio</label>
+        <input type="date" id="editPromoStartDate" required>
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de fin</label>
+        <input type="date" id="editPromoEndDate" required>
+      </div>
+
+      <div class="form-group">
+        <label>URL de la imagen</label>
+        <input type="url" id="editPromoImage" required>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" class="submit-button">Actualizar Promoción</button>
+        <button type="button" class="cancel-button" onclick="document.getElementById('editPromoFormContainer').style.display='none'">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="form-container" style="display: none;">
+    <h2>Confirmar Eliminación</h2>
+    <p>¿Está seguro que desea eliminar esta promoción?</p>
+    <div class="button-container">
+      <button type="button" class="delete-button" id="confirmDelete">Eliminar</button>
+      <button type="button" class="cancel-button" onclick="document.getElementById('deleteModal').style.display='none'">Cancelar</button>
+    </div>
+  </div>
 </div>
-<script src="../js/promociones-admin.js"></script>
+
+<script type="module">
+  import { addPromo, toggleForm, displayPromos, editPromo, deletePromo } from '../js/promociones-admin.js';
+
+  // Add event listeners after importing
+  document.getElementById('addPromoBtn').addEventListener('click', toggleForm);
+  document.getElementById('cancelBtn').addEventListener('click', toggleForm);
+  document.getElementById('promoForm').addEventListener('submit', addPromo);
+  document.getElementById('editPromoForm').addEventListener('submit', editPromo);
+
+  // Function to open delete confirmation modal
+  window.openDeleteModal = (promoId) => {
+    const modal = document.getElementById('deleteModal');
+    modal.style.display = 'block';
+    document.getElementById('confirmDelete').onclick = async () => {
+      await deletePromo(promoId);
+      modal.style.display = 'none';
+    };
+  };
+
+  // Display promotions when the page loads
+  displayPromos();
+</script>
 </body>
 </html>
