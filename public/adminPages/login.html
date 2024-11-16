@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrador</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/nav-login.css">
+</head>
+<body>
+<header>
+    <div id="meme">
+        <div id="burger" onclick="togglemenu()"></div>
+    </div>
+    <nav>
+        <ul id="menulista">
+            <li><a href="../userPages/index.html">Página Pública</a></li>
+            <li><a href="#">Página Operativa</a></li>
+            <li><a href="#">Más info</a></li>
+        </ul>
+    </nav>
+</header>
+<section>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form id="loginForm">
+        <h3>Login Here</h3>
+
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter your email" id="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" required>
+
+        <div id="errorMessage" class="error-message"></div>
+
+        <button type="submit">Log In</button>
+    </form>
+</section>
+
+<!-- Import Firebase using type="module" -->
+<script type="module" src="../js/js/auth/login.js"></script>
+
+<!-- Navigation Menu Script -->
+<script>
+    let menulista = document.getElementById("menulista");
+    menulista.style.maxHeight = "0px";
+
+    function togglemenu() {
+        if(menulista.style.maxHeight == "0px") {
+            menulista.style.maxHeight = "400px";
+        } else {
+            menulista.style.maxHeight = "0px";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/cartelera-admin.css">
-  <title>Cartelera Management</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/cartelera-admin.css">
+    <title>Promociones Management</title>
 </head>
 <body>
 <div class="sidebar">
@@ -21,9 +21,9 @@
 
 <div class="main-content">
   <div class="header">
-    <h1>Cartelera</h1>
+    <h1>Promociones</h1>
     <button class="add-movie-button" onclick="openModal()">
-      + Agregar Película
+      + Agregar promoción
     </button>
   </div>
 
@@ -35,12 +35,12 @@
 <div id="addMovieModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <h2 class="modal-title">Agregar Película</h2>
+      <h2 class="modal-title">Agregar Promoción</h2>
     </div>
 
     <form id="movieForm" onsubmit="addMovie(event)">
       <div class="form-group">
-        <label>Agregar título de la película</label>
+        <label>Agregar título de la promoción</label>
         <input type="text" id="movieTitle" required>
       </div>
 
@@ -55,7 +55,17 @@
       </div>
 
       <div class="form-group">
-        <label>Imagen de la película</label>
+        <label for="startDate">Fecha de Inicio:</label>
+        <input type="date" id="startDate" name="startDate" required>
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">Fecha de Fin:</label>
+        <input type="date" id="endDate" name="endDate" required>
+      </div>
+
+      <div class="form-group">
+        <label>Imagen de la promoción</label>
         <input type="file" id="movieImage" accept="image/*" required>
       </div>
 
@@ -64,13 +74,12 @@
       </button>
 
       <div class="button-container">
-        <button type="submit" class="submit-button">Agregar Película</button>
+        <button type="submit" class="submit-button">Agregar Promoción</button>
         <button type="button" class="cancel-button" onclick="closeModal()">Cancelar</button>
       </div>
     </form>
   </div>
 </div>
-
-<script src="../js/cartelera-admin.js"></script>
+<script src="../js/promociones-admin.js"></script>
 </body>
 </html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/cartelera-admin.css">
+    <title>Dulcería Management</title>
+
+</head>
+<body>
+<div class="sidebar">
+    <div class="admin-profile">
+        <div class="admin-avatar"></div>
+        <div class="admin-info">
+            <h2>Admin User</h2>
+            <p>admin@cinema.com</p>
+        </div>
+    </div>
+    <button class="sidebar-button" onclick="window.location.href='dashboard.html'">← Regresar</button>
+    <button class="sidebar-button">+ Añadir empleado</button>
+</div>
+
+<div class="main-content">
+    <div class="header">
+        <h1>Dulcería</h1>
+        <button type="button" class="add-movie-button" id="addProductBtn">
+            + Agregar Producto
+        </button>
+    </div>
+
+    <div id="moviesGrid" class="movies-grid">
+        <!-- Productos van aqui!!!!!!!!!!!!!!!!!!!!! No metan nada aca!!!!!!!!! -->
+    </div>
+
+    <div id="addMovieFormContainer" class="form-container" style="display: none;">
+        <h2>Agregar Artículo</h2>
+        <form id="movieForm">
+            <div class="form-group">
+                <label>Agregar título del producto</label>
+                <input type="text" id="movieTitle" required>
+            </div>
+
+            <div class="form-group">
+                <label>Agregar descripción</label>
+                <textarea id="movieDescription" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Agregar precio</label>
+                <input type="number" id="moviePrice" required>
+            </div>
+
+            <div class="form-group">
+                <label>URL de la imagen del producto</label>
+                <input type="url" id="movieImage" required
+                       placeholder="https://ejemplo.com/imagen.jpg">
+                <small style="color: #666; display: block; margin-top: 5px;">
+                    Ingrese la URL de una imagen (por ejemplo, desde Google Images)
+                </small>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="submit-button">Agregar Artículo</button>
+                <button type="button" class="cancel-button" id="cancelBtn">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- New Edit Form Container -->
+    <div id="editMovieFormContainer" class="form-container" style="display: none;">
+        <h2>Editar Artículo</h2>
+        <form id="editMovieForm">
+            <input type="hidden" id="editMovieId">
+            <div class="form-group">
+                <label>Título del producto</label>
+                <input type="text" id="editMovieTitle" required>
+            </div>
+
+            <div class="form-group">
+                <label>Descripción</label>
+                <textarea id="editMovieDescription" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Precio</label>
+                <input type="number" id="editMoviePrice" required>
+            </div>
+
+            <div class="form-group">
+                <label>URL de la imagen del producto</label>
+                <input type="url" id="editMovieImage" required>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="submit-button">Guardar Cambios</button>
+                <button type="button" class="cancel-button" id="editCancelBtn">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteConfirmModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Confirmar Eliminación</h3>
+            <p>¿Estás seguro que deseas eliminar este producto?</p>
+            <div class="modal-buttons">
+                <button class="cancel-button" onclick="closeDeleteModal()">Cancelar</button>
+                <button class="delete-button" onclick="confirmDelete()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { addMovie, toggleForm, displayProducts, editProduct, deleteProduct } from '../js/dulceria-admin.js';
+
+    // Event listeners
+    document.getElementById('addProductBtn').addEventListener('click', toggleForm);
+    document.getElementById('cancelBtn').addEventListener('click', toggleForm);
+    document.getElementById('movieForm').addEventListener('submit', addMovie);
+    document.getElementById('editMovieForm').addEventListener('submit', editProduct);
+    document.getElementById('editCancelBtn').addEventListener('click', () => {
+        document.getElementById('editMovieFormContainer').style.display = 'none';
+    });
+
+    // Display products
+    displayProducts();
+
+    // Make functions available globally for the onclick handlers
+    window.openEditForm = (productId) => {
+        const editForm = document.getElementById('editMovieFormContainer');
+        editForm.style.display = 'block';
+        // The product data will be populated by the function in dulceria-admin.js
+    };
+
+    window.openDeleteModal = (productId) => {
+        const modal = document.getElementById('deleteConfirmModal');
+        modal.style.display = 'block';
+        modal.dataset.productId = productId;
+    };
+
+    window.closeDeleteModal = () => {
+        const modal = document.getElementById('deleteConfirmModal');
+        modal.style.display = 'none';
+    };
+
+    window.confirmDelete = async () => {
+        const modal = document.getElementById('deleteConfirmModal');
+        const productId = modal.dataset.productId;
+        await deleteProduct(productId);
+        closeDeleteModal();
+    };
+</script>
+</body>
+</html>
